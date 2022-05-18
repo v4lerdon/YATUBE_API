@@ -50,7 +50,7 @@ class FollowViewSet(viewsets.ModelViewSet):
 
     def get_queryset(self):
         user = get_object_or_404(User, username=self.request.user.username)
-        followings = user.follower
+        followings = user.follower.all()
         return followings
 
     def perform_create(self, serializer):
