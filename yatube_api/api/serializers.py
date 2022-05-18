@@ -43,6 +43,10 @@ class FollowingSerializer(serializers.ModelSerializer):
         slug_field='username'
     )
 
+    class Meta:
+        fields = '__all__'
+        model = Follow
+
     def validate(self, data):
         user = self.context['request'].user
         follow = data['following']
@@ -55,7 +59,3 @@ class FollowingSerializer(serializers.ModelSerializer):
                 "Вы уже подписаны на этого автора"
             )
         return data
-
-    class Meta:
-        fields = '__all__'
-        model = Follow
